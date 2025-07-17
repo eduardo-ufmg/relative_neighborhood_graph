@@ -1,7 +1,8 @@
-import numpy as np
-from sklearn.datasets import make_blobs
-from relative_neighborhood_graph import relative_neighborhood_graph
 from plot_relative_neighborhood_graph import plot_relative_neighborhood_graph
+from sklearn.datasets import make_blobs
+
+from relative_neighborhood_graph.relative_neighborhood_graph import \
+    relative_neighborhood_graph
 
 # Generate synthetic data using sklearn's make_blobs
 X, _ = make_blobs(n_samples=100, n_features=2)[0:2]

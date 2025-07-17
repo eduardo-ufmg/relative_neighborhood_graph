@@ -1,7 +1,7 @@
 import numpy as np
-
 from numpy.typing import ArrayLike
 from scipy.spatial import Delaunay
+
 
 def relative_neighborhood_graph(X: ArrayLike) -> np.ndarray:
     """
@@ -19,13 +19,13 @@ def relative_neighborhood_graph(X: ArrayLike) -> np.ndarray:
     """
     X = np.asarray(X)
     n_samples = X.shape[0]
-    
+
     if n_samples < 2:
         return np.zeros((n_samples, n_samples), dtype=bool)
 
     # Compute the Delaunay triangulation
     delaunay = Delaunay(X)
-    
+
     # Initialize adjacency matrix
     adjacency_matrix = np.zeros((n_samples, n_samples), dtype=bool)
 
@@ -35,7 +35,7 @@ def relative_neighborhood_graph(X: ArrayLike) -> np.ndarray:
             for j in range(i + 1, len(simplex)):
                 p1, p2 = simplex[i], simplex[j]
                 distance = np.linalg.norm(X[p1] - X[p2])
-                
+
                 # Check if there is a third point that is closer to both p1 and p2
                 for k in range(n_samples):
                     if k not in simplex:
